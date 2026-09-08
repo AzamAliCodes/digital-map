@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Indian Art Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Title bar -->
+        <header id="header">
+            <h1>Art History of India</h1>
+            <p>An interactive journey through classical art movements</p>
+        </header>
+
+        <div id="main-content">
+            <!-- Map container -->
+            <div id="map"></div>
+
+            <!-- Information panel -->
+            <aside id="info-panel">
+                <div class="panel-content" id="default-view">
+                    <div class="ornament">✺</div>
+                    <h2>Explore the Canvas of Time</h2>
+                    <p>Select a location on the map to discover the rich heritage of Indian art, from ancient rock-cut murals to monumental temple architectures and classical paintings.</p>
+                </div>
+                
+                <div class="panel-content hidden" id="detail-view">
+                    <button id="back-btn">← Map Overview</button>
+                    <div class="image-container">
+                        <img id="detail-image" src="" alt="Art detail">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="text-content">
+                        <h2 id="detail-title">Title</h2>
+                        <div class="meta-info">
+                            <span id="detail-region" class="tag">Region</span>
+                            <span id="detail-period" class="tag">Period</span>
+                        </div>
+                        <h3 id="detail-movement">Movement</h3>
+                        <div class="divider"></div>
+                        <p id="detail-description">Description goes here...</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
