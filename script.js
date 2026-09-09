@@ -466,6 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stateView.classList.remove('hidden');
 
         document.getElementById('info-panel').scrollTop = 0;
+        ensureMobileSplitVisible();
     }
 
     // Reset to All India view
@@ -492,6 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
         defaultView.classList.remove('hidden');
 
         document.getElementById('info-panel').scrollTop = 0;
+        ensureMobileSplitVisible();
     }
 
     // Show details panel
@@ -564,6 +566,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 350);
         }
+
+        ensureMobileSplitVisible();
     }
 
     // Event listeners for team nav pills
@@ -684,10 +688,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Mobile sheet toggle between split and map-focused view
+    const mobileSheetToggle = document.getElementById('mobile-sheet-toggle');
+    const mainContent = document.getElementById('main-content');
+    if (mobileSheetToggle && mainContent) {
+        mobileSheetToggle.addEventListener('click', () => {
+            mainContent.classList.toggle('map-focused');
+            setTimeout(() => {
+                if (map) map.invalidateSize();
+            }, 320);
+        });
+    }
+
+    function ensureMobileSplitVisible() {
+        if (mainContent && mainContent.classList.contains('map-focused')) {
+            mainContent.classList.remove('map-focused');
+            setTimeout(() => {
+                if (map) map.invalidateSize();
+            }, 320);
+        }
+    }
+
+    // Auto-invalidate map size on window resize / device orientation change
+    window.addEventListener('resize', () => {
+        if (map) map.invalidateSize();
+    });
+
     // Expose helpers globally
     window.showDetails = showDetails;
     window.selectState = selectState;
     window.resetToAllIndia = resetToAllIndia;
     window.markerMap = markerMap;
+    window.ensureMobileSplitVisible = ensureMobileSplitVisible;
 });
 

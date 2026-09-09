@@ -1248,3 +1248,372 @@ header.app-navbar {
     font-size: 0.70rem;
     white-space: nowrap;
 }
+
+/* Mobile sheet handle hidden on desktop */
+.mobile-sheet-handle {
+    display: none;
+}
+
+/* ==========================================================================
+   Mobile & Responsive Layout Optimizations (Tablets & Phones <= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* App viewport container: prevent unwanted scroll bouncing, use dynamic viewport */
+    #app-container {
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    /* Navbar: compact brand on top, horizontal scrolling state pills underneath */
+    header.app-navbar {
+        height: auto;
+        min-height: unset;
+        padding: 8px 12px 6px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        background: rgba(253, 252, 250, 0.98);
+        border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .navbar-brand {
+        gap: 8px;
+    }
+
+    .brand-insignia {
+        width: 22px;
+        height: 22px;
+    }
+
+    .brand-insignia svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .brand-title {
+        font-size: 1.05rem;
+        letter-spacing: 0.6px;
+    }
+
+    .brand-subtitle {
+        font-size: 0.58rem;
+        letter-spacing: 0.6px;
+    }
+
+    .navbar-team-nav {
+        width: 100%;
+        padding: 1px 2px;
+        background: transparent;
+        border: none;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .navbar-team-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .team-nav-badge {
+        display: none;
+    }
+
+    .team-nav-pills {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 5px;
+        width: max-content;
+        padding-right: 8px;
+    }
+
+    .nav-pill {
+        padding: 5px 11px;
+        font-size: 0.70rem;
+        flex-shrink: 0;
+        min-height: 30px;
+    }
+
+    /* Main Content: Vertical split with smooth transition */
+    #main-content {
+        flex-direction: column;
+        height: calc(100vh - 84px);
+        height: calc(100dvh - 84px);
+        overflow: hidden;
+        position: relative;
+    }
+
+    #map {
+        flex: none;
+        width: 100%;
+        height: 42%;
+        min-height: 180px;
+        transition: height 0.3s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    #info-panel {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        flex: 1;
+        height: 58%;
+        border-left: none;
+        border-top: 1px solid var(--color-border-subtle);
+        box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.06);
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        transition: height 0.3s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    /* Mobile Sheet Drag Handle */
+    .mobile-sheet-handle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 0 5px;
+        cursor: pointer;
+        background: var(--color-bg-panel);
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        user-select: none;
+    }
+
+    .sheet-drag-pill {
+        width: 36px;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(0, 0, 0, 0.22);
+        transition: background 0.2s, width 0.2s;
+    }
+
+    .mobile-sheet-handle:active .sheet-drag-pill {
+        background: var(--color-accent-gold);
+        width: 44px;
+    }
+
+    /* Expanded Map Mode (Peek sheet) */
+    #main-content.map-focused #map {
+        height: calc(100% - 64px);
+    }
+
+    #main-content.map-focused #info-panel {
+        height: 64px;
+        flex: none;
+        overflow-y: hidden;
+    }
+
+    /* Floating map legend: hide on mobile to declutter map (state pills already show color dots) */
+    .map-legend {
+        display: none !important;
+    }
+
+    /* Zoom controls: compact and positioned comfortably */
+    .leaflet-bottom.leaflet-right {
+        bottom: 8px;
+        right: 8px;
+    }
+
+    .leaflet-control-zoom {
+        margin: 0 !important;
+        transform: scale(0.85);
+        transform-origin: bottom right;
+    }
+
+    /* Panel view content padding */
+    .panel-view {
+        padding: 14px 16px 36px;
+    }
+
+    .overview-crest {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 10px;
+    }
+
+    #default-view h2 {
+        font-size: 1.40rem;
+        margin-bottom: 8px;
+    }
+
+    .overview-intro-text {
+        font-size: 0.82rem;
+        line-height: 1.5;
+        margin-bottom: 18px;
+    }
+
+    /* Spotlight cards */
+    .spotlight-card-item {
+        padding: 10px 12px;
+    }
+
+    .spotlight-card-title {
+        font-size: 0.95rem;
+    }
+
+    .spotlight-card-desc {
+        font-size: 0.72rem;
+    }
+
+    /* State view on mobile */
+    .state-header-banner {
+        padding: 14px 16px;
+        margin-bottom: 14px;
+    }
+
+    #state-name {
+        font-size: 1.60rem;
+    }
+
+    #state-tagline {
+        font-size: 0.76rem;
+    }
+
+    .state-hero-container {
+        height: 170px;
+        margin-bottom: 14px;
+    }
+
+    .state-intro-narrative p {
+        font-size: 0.82rem;
+        line-height: 1.55;
+    }
+
+    .showcase-card-img-wrapper {
+        height: 140px;
+    }
+
+    /* Detail view on mobile */
+    .detail-header-flex {
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+
+    .detail-thumb-box {
+        width: 74px;
+        height: 74px;
+        border-radius: var(--radius-sm);
+    }
+
+    .detail-title-group h2 {
+        font-size: 1.30rem;
+        line-height: 1.2;
+    }
+
+    .detail-title-group h3 {
+        font-size: 0.80rem;
+    }
+
+    .heritage-spec-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    .spec-card {
+        padding: 9px 11px;
+    }
+
+    .spec-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.6px;
+    }
+
+    .spec-value {
+        font-size: 0.78rem;
+    }
+
+    .detail-section-title {
+        font-size: 0.66rem;
+        margin-bottom: 8px;
+    }
+
+    .text-content p {
+        font-size: 0.82rem;
+        line-height: 1.55;
+    }
+
+    .significance-box {
+        padding: 11px 13px;
+        margin-bottom: 16px;
+    }
+
+    .significance-content p {
+        font-size: 0.80rem;
+        line-height: 1.5;
+    }
+
+    .hallmarks-list li {
+        padding: 7px 10px;
+        font-size: 0.78rem;
+    }
+
+    /* Lightbox Modal on Mobile */
+    .modal-backdrop {
+        padding: 8px;
+    }
+
+    .modal-content {
+        max-width: 98vw;
+        max-height: 96vh;
+        border-radius: var(--radius-md);
+    }
+
+    .modal-close {
+        top: 10px;
+        right: 10px;
+        width: 38px;
+        height: 38px;
+        font-size: 1.3rem;
+    }
+
+    .modal-image-wrapper {
+        max-height: calc(90vh - 76px);
+        padding: 8px;
+    }
+
+    .modal-image-wrapper img {
+        max-height: calc(90vh - 76px);
+    }
+
+    .modal-caption-bar {
+        padding: 8px 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+    }
+
+    .modal-caption-text h3 {
+        font-size: 1.10rem;
+    }
+
+    .modal-caption-text p {
+        font-size: 0.70rem;
+    }
+
+    .modal-hint {
+        display: none;
+    }
+}
+
+/* Extra compact screens (<= 380px, e.g. iPhone SE / smaller Androids) */
+@media (max-width: 380px) {
+    .brand-subtitle {
+        display: none;
+    }
+
+    .heritage-spec-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #map {
+        height: 38%;
+    }
+
+    #info-panel {
+        height: 62%;
+    }
+}
