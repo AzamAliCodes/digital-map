@@ -3,18 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ancient Indian Art Map</title>
+    <title>Art History of India — National Cartographic Archive</title>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Cormorant Garamond (Classical Display) & Plus Jakarta Sans (Modern UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app-container">
-        <!-- Title bar -->
-        <header id="header">
-            <h1>Art History of India</h1>
-            <p>An interactive journey through classical art movements</p>
+        <!-- Sleek Unified App Navigation Bar -->
+        <header class="app-navbar" id="header">
+            <div class="navbar-brand">
+                <div class="brand-insignia">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <div class="brand-text-group">
+                    <h1 class="brand-title">Art History of India</h1>
+                    <span class="brand-subtitle">National Cartographic Archive</span>
+                </div>
+            </div>
+            
+            <!-- Team Presentation States Bar -->
+            <nav class="navbar-team-nav" id="team-nav-container" aria-label="Team Presentation States">
+                <div class="team-nav-badge">
+                    <span class="team-badge-icon"></span>
+                    <span class="team-nav-label">Team Focus:</span>
+                </div>
+                <div class="team-nav-pills" id="team-pills">
+                    <button class="nav-pill active" data-state="all">
+                        All India
+                    </button>
+                    <button class="nav-pill" data-state="West Bengal">
+                        <span class="pill-color-dot" style="background:#C62828;"></span> West Bengal
+                    </button>
+                    <button class="nav-pill" data-state="Telangana">
+                        <span class="pill-color-dot" style="background:#EF6C00;"></span> Telangana
+                    </button>
+                    <button class="nav-pill" data-state="Jharkhand">
+                        <span class="pill-color-dot" style="background:#2E7D32;"></span> Jharkhand
+                    </button>
+                    <button class="nav-pill" data-state="Assam">
+                        <span class="pill-color-dot" style="background:#00796B;"></span> Assam
+                    </button>
+                    <button class="nav-pill" data-state="Andhra Pradesh">
+                        <span class="pill-color-dot" style="background:#7B1FA2;"></span> Andhra Pradesh
+                    </button>
+                </div>
+            </nav>
         </header>
 
         <div id="main-content">
@@ -23,35 +64,161 @@
 
             <!-- Information panel -->
             <aside id="info-panel">
+                <!-- Overview / Default View -->
                 <div class="panel-content" id="default-view">
-                    <div class="ornament">✺</div>
-                    <h2>Explore the Canvas of Time</h2>
-                    <p>Select a location on the map to discover the rich heritage of Indian art, from ancient rock-cut murals to monumental temple architectures and classical paintings.</p>
+                    <div class="overview-crest">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M12 3v18"/>
+                            <path d="M3 12h18"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                    </div>
+                    <h2>The Living Canvas of India</h2>
+                    <p class="overview-intro-text">An interactive exploration across 10,000 years of subcontinent art traditions—from prehistoric rock shelters to monumental classical temples, courtly manuscript ateliers, and vibrant living tribal rituals.</p>
+                    
+                    <div class="spotlight-section-header">Curated Regional Focus</div>
+                    <div class="spotlight-cards-grid">
+                        <div class="spotlight-card-item spotlight-chip" data-target="West Bengal" style="--spotlight-accent: #C62828;">
+                            <div class="spotlight-card-content">
+                                <div class="spotlight-card-title">West Bengal</div>
+                                <div class="spotlight-card-desc">Malla Terracotta Temples & Kalighat Urban Folk</div>
+                            </div>
+                            <div class="spotlight-card-arrow">→</div>
+                        </div>
+                        <div class="spotlight-card-item spotlight-chip" data-target="Telangana" style="--spotlight-accent: #EF6C00;">
+                            <div class="spotlight-card-content">
+                                <div class="spotlight-card-title">Telangana</div>
+                                <div class="spotlight-card-desc">Kakatiya Basalt Sculptures & Cheriyal Scrolls</div>
+                            </div>
+                            <div class="spotlight-card-arrow">→</div>
+                        </div>
+                        <div class="spotlight-card-item spotlight-chip" data-target="Jharkhand" style="--spotlight-accent: #2E7D32;">
+                            <div class="spotlight-card-content">
+                                <div class="spotlight-card-title">Jharkhand</div>
+                                <div class="spotlight-card-desc">GI-Tagged Sohrai-Khovar Murals & Santhal Scrolls</div>
+                            </div>
+                            <div class="spotlight-card-arrow">→</div>
+                        </div>
+                        <div class="spotlight-card-item spotlight-chip" data-target="Assam" style="--spotlight-accent: #00796B;">
+                            <div class="spotlight-card-content">
+                                <div class="spotlight-card-title">Assam</div>
+                                <div class="spotlight-card-desc">Ahom Court Manuscripts & Majuli Sattriya Masks</div>
+                            </div>
+                            <div class="spotlight-card-arrow">→</div>
+                        </div>
+                        <div class="spotlight-card-item spotlight-chip" data-target="Andhra Pradesh" style="--spotlight-accent: #7B1FA2;">
+                            <div class="spotlight-card-content">
+                                <div class="spotlight-card-title">Andhra Pradesh</div>
+                                <div class="spotlight-card-desc">Lepakshi Vijayanagara Murals & Sacred Kalamkari</div>
+                            </div>
+                            <div class="spotlight-card-arrow">→</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- State presentation view -->
+                <div class="panel-content hidden" id="state-view">
+                    <button id="state-back-btn" class="back-link">← All India Overview</button>
+                    <div class="state-header-banner" id="state-header-banner">
+                        <span class="team-state-badge" id="state-badge">Curated Region</span>
+                        <h2 id="state-name">State Name</h2>
+                        <p id="state-tagline" class="state-tagline-text">Tagline</p>
+                    </div>
+                    <div class="state-body">
+                        <p id="state-intro-text" class="state-intro"></p>
+                        
+                        <div class="section-title">Key Artistic Traditions</div>
+                        <ul id="state-highlights-list" class="highlights-list"></ul>
+
+                        <div class="section-title">Featured Artworks & Visual Heritage</div>
+                        <div id="state-artworks-container" class="state-artworks-grid"></div>
+                    </div>
                 </div>
                 
+                <!-- Artwork Detail View -->
                 <div class="panel-content hidden" id="detail-view">
-                    <button id="back-btn">← Map Overview</button>
-                    <div class="image-container">
-                        <img id="detail-image" src="" alt="Art detail">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="text-content">
-                        <h2 id="detail-title">Title</h2>
-                        <div class="meta-info">
-                            <span id="detail-region" class="tag">Region</span>
-                            <span id="detail-period" class="tag">Period</span>
+                    <button id="back-btn" class="back-link">← Back to Overview</button>
+                    <div class="detail-header-card">
+                        <div class="detail-square-thumb-box clickable-image-container" id="detail-image-container" title="Click to enlarge image">
+                            <img id="detail-image" src="" alt="Art detail">
+                            <div class="thumb-expand-icon">⤢</div>
                         </div>
-                        <h3 id="detail-movement">Movement</h3>
-                        <div class="divider"></div>
-                        <p id="detail-description">Description goes here...</p>
+                        <div class="detail-header-info">
+                            <div class="detail-status-pill-row">
+                                <span id="detail-status" class="heritage-status-badge">Heritage Site</span>
+                            </div>
+                            <h2 id="detail-title">Title</h2>
+                            <div class="meta-info">
+                                <span id="detail-region" class="tag">Region</span>
+                                <span id="detail-period" class="tag">Period</span>
+                            </div>
+                            <h3 id="detail-movement">Movement</h3>
+                        </div>
+                    </div>
+
+                    <!-- Quick Heritage Specs Grid -->
+                    <div class="heritage-spec-grid">
+                        <div class="spec-card">
+                            <div class="spec-label">Medium & Materials</div>
+                            <div id="detail-medium" class="spec-value">—</div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="spec-label">Patronage & Provenance</div>
+                            <div id="detail-patronage" class="spec-value">—</div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Historical Narrative & Context -->
+                    <div class="detail-section">
+                        <h4 class="detail-section-title">Historical Context</h4>
+                        <div class="text-content">
+                            <p id="detail-description">Description goes here...</p>
+                        </div>
+                    </div>
+
+                    <!-- Cultural Significance Callout Box -->
+                    <div class="significance-box" id="detail-significance-box">
+                        <div class="significance-content">
+                            <span class="significance-label">Cultural Significance</span>
+                            <p id="detail-significance">Significance commentary...</p>
+                        </div>
+                    </div>
+
+                    <!-- Signature Artistic Hallmarks -->
+                    <div class="detail-section">
+                        <h4 class="detail-section-title">Signature Artistic Hallmarks</h4>
+                        <ul id="detail-hallmarks-list" class="hallmarks-list">
+                            <!-- Populated dynamically -->
+                        </ul>
                     </div>
                 </div>
             </aside>
         </div>
     </div>
 
+    <!-- Image Lightbox Modal Popup -->
+    <div id="image-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close" title="Close (Esc)">&times;</button>
+            <div class="modal-image-wrapper">
+                <img id="modal-image" src="" alt="Enlarged artwork">
+            </div>
+            <div class="modal-caption-bar">
+                <div class="modal-caption-text">
+                    <h3 id="modal-title">Artwork Title</h3>
+                    <p id="modal-subtitle">Region • Period • Movement</p>
+                </div>
+                <span class="modal-hint">Press Esc or click outside to close</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="assets/states_data.js"></script>
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
